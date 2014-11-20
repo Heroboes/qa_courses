@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="level4" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.selenium-server-standalone-2.44.0.classpath">
+    <pathelement location="${basedir}/lib/selenium-server-standalone-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.testng.classpath">
+    <pathelement location="${basedir}/lib/testng.jar"/>
+  </path>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module Level4 -->
+  
+  <dirname property="module.level4.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.level4" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.level4" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.level4" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.level4" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="level4.output.dir" value="${module.level4.basedir}/out/production/Level4"/>
+  <property name="level4.testoutput.dir" value="${module.level4.basedir}/out/test/Level4"/>
+  
+  <path id="level4.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+
+    <path id="projectOutPut">
+        <pathelement location="${basedir}/out/production/Level4"/>
+    </path>
+  
+  <path id="level4.module.production.classpath">
+    <path refid="${module.jdk.classpath.level4}"/>
+    <path refid="library.selenium-server-standalone-2.44.0.classpath"/>
+    <path refid="library.testng.classpath"/>
+    <path refid="projectOutPut"/>
+  </path>
+  
+  <path id="level4.runtime.production.module.classpath">
+    <pathelement location="${level4.output.dir}"/>
+    <path refid="library.selenium-server-standalone-2.44.0.classpath"/>
+    <path refid="library.testng.classpath"/>
+  </path>
+  
+  <path id="level4.module.classpath">
+    <path refid="${module.jdk.classpath.level4}"/>
+    <pathelement location="${level4.output.dir}"/>
+    <path refid="library.selenium-server-standalone-2.44.0.classpath"/>
+    <path refid="library.testng.classpath"/>
+  </path>
+  
+  <path id="level4.runtime.module.classpath">
+    <pathelement location="${level4.testoutput.dir}"/>
+    <pathelement location="${level4.output.dir}"/>
+    <path refid="library.selenium-server-standalone-2.44.0.classpath"/>
+    <path refid="library.testng.classpath"/>
+  </path>
+  
+  <patternset id="excluded.from.module.level4">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.level4">
+    <patternset refid="excluded.from.module.level4"/>
+  </patternset>
+  
+  <path id="level4.module.sourcepath">
+    <dirset dir="${module.level4.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <target name="compile.module.level4" depends="compile.module.level4.production,compile.module.level4.tests" description="Compile module Level4"/>
+  
+  <target name="compile.module.level4.production" description="Compile module Level4; production classes">
+    <mkdir dir="${level4.output.dir}"/>
+    <javac destdir="${level4.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.level4}/javac">
+      <compilerarg line="${compiler.args.level4}"/>
+      <bootclasspath refid="level4.module.bootclasspath"/>
+      <classpath refid="level4.module.production.classpath"/>
+      <src refid="level4.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.level4"/>
+    </javac>
+    
+    <copy todir="${level4.output.dir}">
+      <fileset dir="${module.level4.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.level4.tests" depends="compile.module.level4.production" description="compile module Level4; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.level4" description="cleanup module">
+    <delete dir="${level4.output.dir}"/>
+    <delete dir="${level4.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.level4" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.level4" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+
+    <target name="prepareForRunning" depends="all" description="prepare tests for running">
+        <delete dir="${basedir}/output"/>
+        <mkdir dir="${basedir}/output"/>
+        <taskdef name="testng" classname="org.testng.TestNGAntTask">
+            <classpath>
+                <pathelement location="${basedir}/lib/testng.jar"/>
+            </classpath>
+        </taskdef>
+    </target>
+
+    <target name="runTest" depends="prepareForRunning,all,init" description="run tests">
+        <testng outputdir="${basedir}/output" classpathref="level4.module.production.classpath">
+            <xmlfileset dir="." includes="testng.xml"/>
+        </testng>
+    </target>
+
+</project>

@@ -6,7 +6,6 @@ import com.dio.courses.abakhtiozin.pages.CurrencyConverterPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.TestNG;
 
 /**
  * Created by AA on 25.10.2014.

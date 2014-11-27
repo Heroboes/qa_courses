@@ -3,12 +3,9 @@ package com.dio.courses.abakhtiozin.tests;
 import com.dio.courses.abakhtiozin.WebDriverFactory;
 import com.dio.courses.abakhtiozin.pages.MainPage;
 import com.dio.courses.abakhtiozin.pages.MyPageFactory;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import org.testng.annotations.BeforeClass;
-
 import java.util.concurrent.TimeUnit;
 
 /**

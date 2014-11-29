@@ -17,9 +17,7 @@ public class TestBase {
 
     @BeforeClass
     public void setUp() throws Exception {
-//        System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome/chromedriver");
-        driver = WebDriverFactory.getDriver(DesiredCapabilities.chrome());
-
+        driver = WebDriverFactory.getDriver(DesiredCapabilities.firefox());
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
